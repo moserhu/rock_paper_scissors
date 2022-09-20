@@ -1,8 +1,53 @@
+const rock = document.querySelector(".rock")
+const paper = document.querySelector(".paper")
+const scissors = document.querySelector(".scissors")
+const buttons = document.querySelectorAll("button")
 let getCompChoice = parseInt(Math.random() * 3);
-let playerSelection = 0;
-const playerInput = prompt("Enter Here");
-
 const computerSelection = getCompChoice;
+
+function compChoice() {
+choice = getCompChoice;
+    
+    if (choice == 0) {
+        document.getElementById('computerPrint').innerHTML =("Rock")
+    }
+    else if (choice == 1) {
+       document.getElementById('computerPrint').innerHTML =("Paper")
+    }
+    else if (choice == 2) {
+       document.getElementById('computerPrint').innerHTML =("Scissors")
+    }
+}
+
+rock.addEventListener("click", e => {
+    document.getElementById('playerPrint').innerHTML =("Rock")
+})
+
+paper.addEventListener("click", e => {
+    document.getElementById('playerPrint').innerHTML =("Paper")
+})
+
+scissors.addEventListener("click", e => {
+    document.getElementById('playerPrint').innerHTML =("Scissors")
+})
+
+
+buttons.forEach(button => {
+    button.addEventListener("click", compChoice)
+})
+
+
+
+//document.addEventListener('click', compChoice)
+
+
+
+
+/* 
+let playerSelection = 0;
+//const playerInput = prompt("Enter Here");
+
+
 
 function makeInt() {
 str = playerInput.toUpperCase;  
@@ -42,4 +87,4 @@ function playRound() {
 console.log(playRound(playerSelection,computerSelection))
 
 ////trying to figure out how to get the playerselction 
-/// variable to change and not accept invalid answers
+/// variable to change and not accept invalid answers */

@@ -1,0 +1,74 @@
+html {
+    background-image: linear-gradient(red, purple);
+}
+
+
+
+.buttons {
+    text-align: center;
+    display: flex;
+    flex: auto;
+    justify-content: center;
+    margin: 500px 500px 0px 500px;
+    
+
+}
+
+.boxes {
+    background-color: yellow;
+    border: 5px;
+    border-style: solid;
+    display: flex;
+    margin: 50px 100px 200px 100px;
+    padding: 50px;
+    justify-content: space-around;
+}
+
+
+
+
+.playerResults,
+.computerResults{
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 10px; 
+    border-style: solid;
+    border-color: black;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 20px;
+   
+}
+h2 {
+    text-decoration: underline;
+}
+p {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    margin: 10px;
+    
+}
+
+
+button {
+    padding: 50px;
+    margin: 10px;
+    border: 10px;
+    flex-wrap: 1;
+    border-style:inset ;
+    border-color: gold;
+    background-color: chocolate;
+    color: rgb(126, 42, 174);
+    font-size: 30px;
+    font-weight: 800; 
+}
+
+#playerPrint,
+#computerPrint {
+    font-size: 30px;
+    font-weight: 800; 
+    text-decoration: none;
+}
