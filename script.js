@@ -1,90 +1,119 @@
+let playerScore = 0
+let computerScore = 0
+let roundWinner = ''  
+
+function playRound (playerSelection, computerSelection) {
+  
+
+    if (playerSelection === computerSelection) {
+        roundWinner = 'tie'
+    }
+    if (
+        (playerSelection === 'Rock' && computerSelection === 'Scissors') ||
+        (playerSelection === 'Scissors' && computerSelection === 'Paper') ||
+        (playerSelection === 'Paper' && computerSelection === 'Rock')
+      ) {
+        playerScore++
+        roundWinner = 'player'
+      }
+      if (
+        (computerSelection === 'Rock' && playerSelection === 'Scissors') ||
+        (computerSelection === 'Scissors' && playerSelection === 'Paper') ||
+        (computerSelection === 'Paper' && playerSelection === 'Rock')
+      ) {
+        computerScore++
+        roundWinner = 'computer'
+      }
+    
+}
+
+function getRandomChoice() {
+    let randomNumber = Math.floor(Math.random() * 3)
+    switch (randomNumber) {
+      case 0:
+        return 'Rock'
+      case 1:
+        return 'Paper'
+      case 2:
+        return 'Scissors'
+    }
+  }
+  
+
+
 const rock = document.querySelector(".rock")
 const paper = document.querySelector(".paper")
 const scissors = document.querySelector(".scissors")
-const buttons = document.querySelectorAll("button")
-let getCompChoice = parseInt(Math.random() * 3);
-const computerSelection = getCompChoice;
+const newRound = document.querySelector(".newRound")
+const playerPrint = document.getElementById('playerPrint')
+const computerPrint = document.getElementById('computerPrint')
+const outcome = document.getElementById('outcome')
+const playerScoreboard = document.getElementById('playerScoreboard')
+const computerScoreboard = document.getElementById('computerScoreboard')
 
-function compChoice() {
-choice = getCompChoice;
+
+
+
+
+
+
+rock.addEventListener("click", () => handleClick('Rock'))
+paper.addEventListener("click", () => handleClick('Paper'))
+scissors.addEventListener("click", () => handleClick('Scissors'))
+
+
+newRound.addEventListener("click", function (e) {
+    playerPrint.textContent =""
+    computerPrint.textContent=""
+    outcome.textContent=''
+})
+
+function handleClick(playerSelection) {
+    const computerSelection = getRandomChoice()
+    playRound(playerSelection, computerSelection)
+    makeChoices(playerSelection,computerSelection)
+    updateScore()
     
-    if (choice == 0) {
-        document.getElementById('computerPrint').innerHTML =("Rock")
-    }
-    else if (choice == 1) {
-       document.getElementById('computerPrint').innerHTML =("Paper")
-    }
-    else if (choice == 2) {
-       document.getElementById('computerPrint').innerHTML =("Scissors")
-    }
 }
 
-rock.addEventListener("click", e => {
-    document.getElementById('playerPrint').innerHTML =("Rock")
-})
 
-paper.addEventListener("click", e => {
-    document.getElementById('playerPrint').innerHTML =("Paper")
-})
-
-scissors.addEventListener("click", e => {
-    document.getElementById('playerPrint').innerHTML =("Scissors")
-})
-
-
-buttons.forEach(button => {
-    button.addEventListener("click", compChoice)
-})
-
-
-
-//document.addEventListener('click', compChoice)
-
-
-
-
-/* 
-let playerSelection = 0;
-//const playerInput = prompt("Enter Here");
-
-
-
-function makeInt() {
-str = playerInput.toUpperCase;  
-
-    if (str == "ROCK") {
-        playerSelection = 0;
-    }
-    else if (str == "PAPER") {
-        playerSelection = 1;
+function makeChoices (playerSelection, computerSelection) {
+    switch (playerSelection) {
+      case 'Rock' :
+          playerPrint.textContent = "Rock"
+          break
+      case 'Paper' :
+          playerPrint.textContent = "Paper"
+          break
+      case 'Scissors' :
+          playerPrint.textContent = "Scissors"
+          break
     } 
-    else if (str == "SCISSORS") {
-         playerSelection = 2;
-    }
-    else {
-        console.log("Error");
+
+    
+    switch (computerSelection) {
+        case 'Rock':
+            computerPrint.textContent = "Rock"
+            break
+        case 'Paper':
+            computerPrint.textContent = "Paper"
+            break
+        case 'Scissors':
+            computerPrint.textContent = "Scissors"
+            break
     }
 }
 
-function playRound() {
-    x = playerSelection;
-    y = computerSelection;
- 
-    if ((x == 0 && y == 2) || (x == 1 && y == 0) || (x == 2 && y == 1)) {
-        console.log("Player wins");
+function updateScore() {
+    if (roundWinner === 'tie') {
+      outcome.textContent = "It's a tie!"
+    } else if (roundWinner === 'player') {
+      outcome.textContent = 'You won!'
+    } else if (roundWinner === 'computer') {
+      outcome.textContent = 'You lost!'
     }
-
-    else if ((x == 2 && y == 0) || (x == 0 && y == 1) || (x == 1 && y == 2)) {
-        console.log("Computer wins");
-    }
-    else if ((x == 0 && y == 0) || (x == 1 && y == 1) || (x == 2 && y == 2)) {
-        console.log("Tie!")
-    }
-    else {
-        console.log("FAILURE");
-    }
-}
-console.log(playRound(playerSelection,computerSelection))
-
-////trying to figure out how to get the playerselction 
-/// variable to change and not accept invalid answers */
+  
+    playerScoreboard.textContent = `Player: ${playerScore}`
+    computerScoreboard.textContent = `Computer: ${computerScore}`
+  }
+  

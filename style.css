@@ -9,7 +9,7 @@ html {
     display: flex;
     flex: auto;
     justify-content: center;
-    margin: 500px 500px 0px 500px;
+    margin: 0px 500px 0px 500px;
     
 
 }
@@ -66,9 +66,27 @@ button {
     font-weight: 800; 
 }
 
+.newRound {
+    margin-top: 50px;
+    display: flex;
+    flex: auto;
+    justify-content: center;
+    
+}
+
+
 #playerPrint,
-#computerPrint {
+#computerPrint,
+#outcome,
+#playerScoreboard,
+#computerScoreboard {
     font-size: 30px;
     font-weight: 800; 
     text-decoration: none;
+}
+
+#playerScoreboard,
+#computerScoreboard {
+    display: flex;
+    align-items: center;
 }
